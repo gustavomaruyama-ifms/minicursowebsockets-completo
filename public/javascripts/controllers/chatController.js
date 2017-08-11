@@ -7,8 +7,8 @@ angular.module("chat-web").controller("chatController",
 
         var contatoDeMensagens = 0;
 
-        var dataStream = $websocket('ws://minicursowebsockets.herokuapp.com/chat/websocket');
-        //var dataStream = $websocket('ws://localhost:3000/chat/websocket');
+        //var dataStream = $websocket('ws://minicursowebsockets.herokuapp.com/chat/websocket');
+        var dataStream = $websocket('ws://localhost:3000/chat/websocket');
 
         dataStream.onMessage(function (mensagemRecebida) {
             mensagemRecebida = JSON.parse(mensagemRecebida.data);
