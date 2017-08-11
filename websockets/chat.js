@@ -12,7 +12,7 @@ chatServer.on('connection', function (socket) {
     socket.on('data', broadcast);
     socket.on('close', sair);
     setInterval(function () {
-            conexaoSocket.write(new Date().toTimeString());
+            socket.write(new Date().toTimeString());
         }, 1000
     );
 });
