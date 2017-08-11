@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="chat-web">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat com Websocket</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css"/>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-websocket/dist/angular-websocket.min.js"></script>
+    <script src="javascripts/app.js"></script>
+    <script src="javascripts/controllers/chatController.js"></script>
+</head>
+
+<body ng-controller="chatController">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand centralizar-logo" >
+                    <img alt="Brand" src="images/chat-icon.png">
+                </a>
+                <label class="navbar-text">Minicurso - Chat com Websockets</label>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header fix">
+            <h1>Minicurso |
+                <small>Chat com websocket</small>
+            </h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div ng-repeat="msg in mensagens">
+            <div id="{{msg.id}}">
+                <label>{{msg.nome}}: </label>
+                <label>{{msg.mensagem}}</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <form name="formMensagem">
+                <div class="form-group col-md-2">
+                    <label>Nome:</label>
+                    <input class="form-control" type="text" ng-model="nome" ng-required="true">
+                </div>
+
+                <div class="form-group col-md-10">
+                    <label>Mensagem:</label>
+
+                    <div class="input-group">
+                        <input class="form-control" type="text" ng-model="mensagem" ng-keypress="($event.charCode == 13 && !formMensagem.$invalid)?enviar():return" ng-required="true">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" ng-click="enviar()"
+                                ng-disabled="formMensagem.$invalid">Enviar
+                        </button>
+                    </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

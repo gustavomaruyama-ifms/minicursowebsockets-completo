@@ -1,0 +1,16 @@
+{
+  "name": "chat-web",
+  "authors": [
+    {
+      "name": "Gustavo Yoshio Maruyama",
+      "email": "gustavo.maruyana@ifms.edu.br"
+    }
+  ],
+  "description": "Front-end - minicurso chat com websockets",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.6.3",
+    "bootstrap": "^3.3.7",
+    "angular-websocket": "^2.0.0"
+  }
+}
