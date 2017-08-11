@@ -9,24 +9,28 @@ var pessoas = [];
 chatServer.on('connection', function (socket) {
     console.log('Um novo usuário se conectou!');
     adicionarNaListaDePessoas(socket);
-    socket.on('data',broadcast);
-    socket.on('close',sair);
+    socket.on('data', broadcast);
+    socket.on('close', sair);
+    setInterval(function () {
+            conexaoSocket.write(new Date().toTimeString());
+        }, 1000
+    );
 });
 
-var adicionarNaListaDePessoas = function(socket){
+var adicionarNaListaDePessoas = function (socket) {
     var pessoa = {
-        socket:socket
+        socket: socket
     };
     pessoas.push(pessoa);
 };
 
-var broadcast = function(dados){
+var broadcast = function (dados) {
     for (var i in pessoas) {
         pessoas[i].socket.write(dados);
     }
 };
 
-var sair = function(){
+var sair = function () {
     console.log("Pessoa saiu");
 };
 
